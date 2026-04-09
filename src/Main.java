@@ -25,22 +25,28 @@ public class Main {
         employeeOne.printShortInfo();
         employeeTwo.printShortInfo();
 
+
         //Создание списка.
         EmployeeBook employeeList = new EmployeeBook();
-        employeeList.addEmployee(employeeOne);
-        employeeList.addEmployee(employeeTwo);
-        employeeList.addEmployee(employeeThree);
-        employeeList.addEmployee(employeeFour);
-        employeeList.addEmployee(employeeFive);
-        employeeList.addEmployee(employeeSix);
-        employeeList.addEmployee(employeeSeven);
-        employeeList.addEmployee(employeeEight);
-        employeeList.addEmployee(employeeEight);
+        employeeList.EmployeeBook(employeeOne);
+        employeeList.EmployeeBook(employeeTwo);
+        employeeList.EmployeeBook(employeeThree);
+        employeeList.EmployeeBook(employeeFour);
+        employeeList.EmployeeBook(employeeFive);
+        employeeList.EmployeeBook(employeeSix);
+        employeeList.EmployeeBook(employeeSeven);
+        employeeList.EmployeeBook(employeeEight);
+        employeeList.EmployeeBook(employeeEight);
 
+        //Пустой список
+        EmployeeBook employeeEmptyList = new EmployeeBook();
 
         System.out.println("\nПроверка метода для получения всех значений из списка");
         employeeList.getEmployeeList();
+        System.out.println("Пустой список");
+        employeeEmptyList.getEmployeeList();
         System.out.println("\nСредняя зарплата всех - " + employeeList.averageSalary());
+        System.out.println("\nСредняя зарплата всех пустого массива - " + employeeEmptyList.averageSalary());
         System.out.println("\nНалог PROPORTIONAL");
         employeeList.getTaxList("PROPORTIONAL");
         System.out.println("\nНалог PROGRESSIVE");
@@ -48,16 +54,24 @@ public class Main {
         System.out.println("\nНеверное значение");
         employeeList.getTaxList("CONSTANT");
 
+        System.out.println("Налог для пустого массива PROGRESSIVE");
+        employeeEmptyList.getTaxList("PROGRESSIVE");
+
         //Индексирование зарплат
         employeeList.indexSalaries(2, 10);
         System.out.println("\nПроверка после индексирования зарплат");
         employeeList.getEmployeeList();
 
         System.out.println("\nПоиск первого сотрудника с большей зарплатой в департаменте");
+        System.out.println("Департамент 2, зарплата больше 150 в основном списке");
         employeeList.findFirstEmployeeWithHigherSalary(2, 150);
+        System.out.println("Департамент 1, зарплата больше 300 в пустом списке");
+        employeeEmptyList.findFirstEmployeeWithHigherSalary(1,300);
 
         System.out.println("\nПоиск с меньшими зарплатами");
         employeeList.findEmployeesWithLowerWage(120, 3);
+        System.out.println("Поиск в пустом массиве");
+        employeeEmptyList.findEmployeesWithLowerWage(100,10);
 
         //Поиск сотрудника
         Employee employeeNine = new Employee("Антонова Елена Николаевна", 3, 250);
@@ -67,14 +81,14 @@ public class Main {
 
         //Добавление сотрудника
         System.out.println("\nДобавление сотрудника");
-        System.out.println("employeeList.addEmployee(employeeNine) = " + employeeList.addEmployee(employeeNine));
+        System.out.println("employeeList.EmployeeBook(employeeNine) = " + employeeList.EmployeeBook(employeeNine));
         System.out.println("Проверка");
         employeeList.getEmployeeList();
         System.out.println("Десятый сотрудник и 11 сотрудники");
         Employee employeeTen = new Employee("Тарасова Таисия Тимофеевна", 5, 290);
         Employee employeeEleven = new Employee("Столярова Анастасия Васильевна", 5, 310);
-        System.out.println("employeeList.addEmployee(employeeTen) = " + employeeList.addEmployee(employeeTen));
-        System.out.println("employeeList.addEmployee(employeeEleven) = " + employeeList.addEmployee(employeeEleven));
+        System.out.println("employeeList.EmployeeBook(employeeTen) = " + employeeList.EmployeeBook(employeeTen));
+        System.out.println("employeeList.EmployeeBook(employeeEleven) = " + employeeList.EmployeeBook(employeeEleven));
         System.out.println("Проверка");
         employeeList.getEmployeeList();
 

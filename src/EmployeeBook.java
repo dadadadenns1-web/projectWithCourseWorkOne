@@ -1,21 +1,18 @@
 public class EmployeeBook {
     private final Employee[] employees = new Employee[10];//Создайте класс EmployeeBook c полем типа Employee[10], которое будет выполнять роль хранилища для записей о сотрудниках.
-
-    //Конструктор
-    public EmployeeBook(Employee... employeeList) {
-        for (int i = 0; i < employeeList.length && i < employees.length; i++) { //Заполнение employees
-            employees[i] = employeeList[i];
-        }
-    }
-
     //Методы для вывода в консоль.
     //Получить список всех сотрудников со всеми данными о них, вывести в консоль значения всех полей, кроме Null.
     //Используйте цикл for each и toString.
     public void getEmployeeList() {
+        boolean employeesExist = false;
         for (Employee employee : employees) {
             if (employee != null) {
                 System.out.println(employee);
+                employeesExist = true;
             }
+        }
+        if(!employeesExist){
+            System.out.println("Не найдены сотрудники в списке");
         }
     }
 
@@ -49,12 +46,15 @@ public class EmployeeBook {
         } else if (optionString.equals("PROGRESSIVE")) {
             option = PROGRESSIVE;
         }
+
+        boolean employeesExist = false;
         switch (option) { //Примените switch для выбора формулы расчета зарплаты.
             case (PROPORTIONAL)://Если в метод передать строкой тип расчета PROPORTIONAL, то налог всегда 13%.
                 for (Employee employee : employees) {
                     if (employee != null) {
                         float tax = employee.getSalary() * 0.13f;
                         System.out.println("Налог " + tax + " для сотрудника " + employee.getLastFirstMiddleName());
+                        employeesExist = true;
                     }
                 }
                 break;
@@ -72,11 +72,16 @@ public class EmployeeBook {
                         }
                         float tax = salary * (float) taxPercent / 100;
                         System.out.println("Налог " + tax + " для сотрудника " + employee.getLastFirstMiddleName());
+                        employeesExist = true;
                     }
                 }
                 break;
             default:
                 System.out.println("Неизвестный тип. Существуют \"PROPORTIONAL\", \"PROGRESSIVE\"");
+                return;
+        }
+        if(!employeesExist){
+            System.out.println("Не найдены сотрудники");
         }
     }
 
@@ -98,6 +103,7 @@ public class EmployeeBook {
     //Получить в качестве параметра номер отдела (1–5) и цифру зарплаты и вывести первого сотрудника этого отдела с зарплатой больше указанной вместе с порядковым номером в списке.
     public void findFirstEmployeeWithHigherSalary(int department, int salary) {
         int counter = -1;
+        boolean employeesExist = false;
         for (Employee employee : employees) { //Используйте for
             counter++;
             if (employee == null) {
@@ -110,8 +116,12 @@ public class EmployeeBook {
             if (employeeSalary > salary) {
                 System.out.print("Порядковый номер в списке = " + counter + ", ");
                 employee.printShortInfo();
+                employeesExist = true;
                 break;//Используйте break
             }
+        }
+        if(!employeesExist){
+            System.out.println("Указанный сотрудник не найден");
         }
     }
 
@@ -156,7 +166,7 @@ public class EmployeeBook {
     }
 
     //Добавьте метод наполнения EmployeeBook метод должен найти свободную ячейку в массиве и положить в нее данные нового сотрудника.
-    public boolean addEmployee(Employee employee){
+    public boolean EmployeeBook(Employee employee){
         if(employee == null){
             return false;
         }
