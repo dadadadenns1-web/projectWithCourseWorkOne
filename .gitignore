@@ -32,3 +32,4 @@ bin/
 /.idea/modules.xml
 /NewCourseWorkOne.iml
 /.idea/.gitignore
+/.idea/vcs.xml

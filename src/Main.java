@@ -25,7 +25,7 @@ public class Main {
         employeeOne.printShortInfo();
         employeeTwo.printShortInfo();
 
-        //Создание списка
+        //Создание списка.
         EmployeeBook employeeList = new EmployeeBook();
         employeeList.addEmployee(employeeOne);
         employeeList.addEmployee(employeeTwo);
